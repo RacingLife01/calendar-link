@@ -7,36 +7,44 @@
     <script>
         function redirectToCalendar() {
             let eventTitle = encodeURIComponent("Anniversaire Arno");
-            let eventDetails = encodeURIComponent("Venez fêtez comme il se doit mes 20 ans !");
-            let eventLocation = encodeURIComponent("407 La Flandrine , 01240 Dompierre-sur-veyle");
-            let startDate = "20250320T170000Z";
-            let endDate = "20250320T030000Z";
+            let eventDetails = encodeURIComponent("Venez fêter comme il se doit mes 20 ans !");
+            let eventLocation = encodeURIComponent("407 La Flandrine, 01240 Dompierre-sur-Veyle");
+            
+            // Correction de l'heure (UTC)
+            let startDate = "20250322T170000Z"; // 22 mars 17h UTC
+            let endDate = "20250323T030000Z";   // 23 mars 3h UTC
 
+            // Liens pour chaque service
             let googleLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${eventDetails}&location=${eventLocation}`;
-            let outlookLink = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${eventTitle}&startdt=2025-03-20T14:00:00&enddt=2025-03-20T15:00:00&body=${eventDetails}&location=${eventLocation}`;
-            let icsFile = "https://drive.google.com/uc?export=download&id=1c2zPzZagmZLxyssPqYmDVZFH5cmqAkHh"; // Lien correct
+            let outlookLink = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${eventTitle}&startdt=2025-03-22T17:00:00&enddt=2025-03-23T03:00:00&body=${eventDetails}&location=${eventLocation}`;
+            let icsFile = "https://drive.google.com/uc?export=download&id=1c2zPzZagmZLxyssPqYmDVZFH5cmqAkHh"; // Lien Google Drive vers le .ics
 
             setTimeout(() => {
                 if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad") || navigator.userAgent.includes("Mac OS")) {
                     window.location.replace(icsFile); // Apple Calendrier
-                } else if (navigator.userAgent.includes("Android")) {
+                } else if (navigator.userAgent.includes("Android") || navigator.userAgent.includes("Windows")) {
                     window.location.replace(googleLink); // Google Agenda
                 } else {
-                    document.getElementById("google").href = googleLink;
-                    document.getElementById("outlook").href = outlookLink;
-                    document.getElementById("ics").href = icsFile;
                     document.getElementById("options").style.display = "block";
                 }
-            }, 500); // Petit délai pour éviter les blocages
+            }, 500); // Petit délai pour éviter les blocages navigateurs
         }
     </script>
 </head>
 <body onload="redirectToCalendar()">
-    <div id="options" style="display: none;">
-        <p>Choisissez votre agenda :</p>
-        <a id="google" href="#">Google Agenda</a> | 
-        <a id="outlook" href="#">Outlook</a> | 
-        <a id="ics" href="#">Apple Calendrier (.ics)</a>
+    <h1>Ajouter l'événement à votre agenda 🎉</h1>
+    <p>Si la redirection automatique ne fonctionne pas, utilisez les boutons ci-dessous :</p>
+
+    <div id="options" style="display: block;">
+        <button onclick="window.location.href='https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anniversaire%20Arno&dates=20250322T170000Z/20250323T030000Z&details=Venez%20fêter%20comme%20il%20se%20doit%20mes%2020%20ans!&location=407%20La%20Flandrine,%2001240%20Dompierre-sur-Veyle'">
+            📅 Ajouter à Google Agenda
+        </button>
+        <button onclick="window.location.href='https://outlook.live.com/calendar/0/deeplink/compose?subject=Anniversaire%20Arno&startdt=2025-03-22T17:00:00&enddt=2025-03-23T03:00:00&body=Venez%20fêter%20comme%20il%20se%20doit%20mes%2020%20ans!&location=407%20La%20Flandrine,%2001240%20Dompierre-sur-Veyle'">
+            📧 Ajouter à Outlook
+        </button>
+        <button onclick="window.location.href='https://drive.google.com/uc?export=download&id=1c2zPzZagmZLxyssPqYmDVZFH5cmqAkHh'">
+            📥 Télécharger le fichier .ICS
+        </button>
     </div>
 </body>
 </html>
