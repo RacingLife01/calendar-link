@@ -6,11 +6,11 @@
     <title>Ajouter à l'Agenda</title>
     <script>
         function redirectToCalendar() {
-            let eventTitle = encodeURIComponent("Réunion");
-            let eventDetails = encodeURIComponent("Discussion importante");
-            let eventLocation = encodeURIComponent("Bureau");
-            let startDate = "20250320T130000Z";
-            let endDate = "20250320T140000Z";
+            let eventTitle = encodeURIComponent("Anniversaire Arno");
+            let eventDetails = encodeURIComponent("Venz fêter comme il se doit mes 20 ans !");
+            let eventLocation = encodeURIComponent("407 La Flandrine , 01240 Dompierre-sur-veyle");
+            let startDate = "20250322T170000Z";
+            let endDate = "20250323T30000Z";
 
             let googleLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${eventDetails}&location=${eventLocation}`;
             let outlookLink = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${eventTitle}&startdt=2025-03-20T14:00:00&enddt=2025-03-20T15:00:00&body=${eventDetails}&location=${eventLocation}`;
