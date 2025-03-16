@@ -6,27 +6,28 @@
     <title>Ajouter à l'Agenda</title>
     <script>
         function redirectToCalendar() {
-            let eventTitle = encodeURIComponent("Anniversaire Arno");
-            let eventDetails = encodeURIComponent("Venz fêter comme il se doit mes 20 ans !");
-            let eventLocation = encodeURIComponent("407 La Flandrine , 01240 Dompierre-sur-veyle");
-            let startDate = "20250322T170000Z";
-            let endDate = "20250323T30000Z";
+            let eventTitle = encodeURIComponent("Réunion");
+            let eventDetails = encodeURIComponent("Discussion importante");
+            let eventLocation = encodeURIComponent("Bureau");
+            let startDate = "20250320T130000Z";
+            let endDate = "20250320T140000Z";
 
             let googleLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${eventDetails}&location=${eventLocation}`;
             let outlookLink = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${eventTitle}&startdt=2025-03-20T14:00:00&enddt=2025-03-20T15:00:00&body=${eventDetails}&location=${eventLocation}`;
-            let icsFile = "https://racinglife01.github.io/calendar-link/event.ics"; // Remplace par ton vrai fichier
+            let icsFile = "https://racinglife01.github.io/calendar-link/event.ics"; // Lien correct
 
-            if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad") || navigator.userAgent.includes("Mac OS")) {
-                window.location.href = icsFile; // Redirige vers le fichier .ics pour Apple
-            } else if (navigator.userAgent.includes("Android")) {
-                window.location.href = googleLink; // Redirige vers Google Agenda
-            } else {
-                // Affiche des options si l'appareil n'est pas détecté
-                document.getElementById("google").href = googleLink;
-                document.getElementById("outlook").href = outlookLink;
-                document.getElementById("ics").href = icsFile;
-                document.getElementById("options").style.display = "block";
-            }
+            setTimeout(() => {
+                if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad") || navigator.userAgent.includes("Mac OS")) {
+                    window.location.replace(icsFile); // Apple Calendrier
+                } else if (navigator.userAgent.includes("Android")) {
+                    window.location.replace(googleLink); // Google Agenda
+                } else {
+                    document.getElementById("google").href = googleLink;
+                    document.getElementById("outlook").href = outlookLink;
+                    document.getElementById("ics").href = icsFile;
+                    document.getElementById("options").style.display = "block";
+                }
+            }, 500); // Petit délai pour éviter les blocages
         }
     </script>
 </head>
