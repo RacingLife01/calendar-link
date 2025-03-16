@@ -14,7 +14,7 @@
 
             let googleLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startDate}/${endDate}&details=${eventDetails}&location=${eventLocation}`;
             let outlookLink = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${eventTitle}&startdt=2025-03-20T14:00:00&enddt=2025-03-20T15:00:00&body=${eventDetails}&location=${eventLocation}`;
-            let icsFile = "https://monlienagenda.com/event.ics"; // Remplace par ton lien réel
+            let icsFile = "https://racinglife01.github.io/calendar-link/event.ics"; // Remplace par ton vrai fichier
 
             if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad") || navigator.userAgent.includes("Mac OS")) {
                 window.location.href = icsFile; // Redirige vers le fichier .ics pour Apple
